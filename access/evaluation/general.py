@@ -16,6 +16,7 @@ from access.utils.helpers import mute, get_temp_filepath
 def get_prediction_on_turkcorpus(simplifier, phase):
     source_filepath = get_data_filepath('turkcorpus', phase, 'complex')
     pred_filepath = get_temp_filepath()
+    print(pred_filepath)
     with mute():
         simplifier(source_filepath, pred_filepath)
     return pred_filepath

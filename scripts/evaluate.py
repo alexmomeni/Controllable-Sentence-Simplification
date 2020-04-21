@@ -15,10 +15,11 @@ if __name__ == '__main__':
     print('Evaluating pretrained model')
     prepare_turkcorpus()
     best_model_dir = prepare_models()
+
     recommended_preprocessors_kwargs = {
-        'LengthRatioPreprocessor': {'target_ratio': 0.95},
-        'LevenshteinPreprocessor': {'target_ratio': 0.75},
-        'WordRankRatioPreprocessor': {'target_ratio': 0.75},
+        'LengthRatioPreprocessor': {'target_ratio': 0.50},
+        'LevenshteinPreprocessor': {'target_ratio': 0.50},
+        'WordRankRatioPreprocessor': {'target_ratio': 0.50},
         'SentencePiecePreprocessor': {'vocab_size': 10000},
     }
     preprocessors = get_preprocessors(recommended_preprocessors_kwargs)

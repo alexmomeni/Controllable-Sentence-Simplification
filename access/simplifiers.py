@@ -19,9 +19,10 @@ from access.utils.helpers import count_lines
 
 def memoize_simplifier(simplifier):
     memo = {}
-
+    
     @wraps(simplifier)
     def wrapped(complex_filepath, pred_filepath):
+
         complex_filehash = hashfile(complex_filepath, hexdigest=True)
         previous_pred_filepath = memo.get(complex_filehash)
         if previous_pred_filepath is not None and Path(previous_pred_filepath).exists():
@@ -61,6 +62,7 @@ def get_preprocessed_simplifier(simplifier, preprocessors):
     def preprocessed_simplifier(complex_filepath, output_pred_filepath):
         print(f'preprocessors={preprocessors}')
         preprocessed_complex_filepath = tempfile.mkstemp()[1]
+
         composed_preprocessor.encode_file(complex_filepath, preprocessed_complex_filepath)
         preprocessed_output_pred_filepath = tempfile.mkstemp()[1]
         simplifier(preprocessed_complex_filepath, preprocessed_output_pred_filepath)
